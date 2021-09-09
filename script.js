@@ -53,7 +53,7 @@ function updateColors() {
   roundHSL(colorsArray);
   console.log(colorsArray);
   //display color
-  displayColor(colorHex);
+  colorsArray.forEach(displayColor);
 }
 
 function calculateRGB(value) {
@@ -233,6 +233,12 @@ function createColorsArray(hex, rgb, hsl) {
   return colors;
 }
 
-function displayColor(valueHex) {
-  HTML.colorDisplay.style.background = valueHex;
+function displayColor(color) {
+  console.log(color);
+  const template = document.querySelector("template").content;
+  const copy = template.cloneNode(true);
+  copy.querySelector("article > .displayColor").style.background = color.hex;
+  copy.querySelector("article > .hex").textContent = color.hex;
+  const parent = document.querySelector("section");
+  parent.appendChild(copy);
 }
