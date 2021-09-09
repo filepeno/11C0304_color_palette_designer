@@ -37,14 +37,17 @@ function updateColors() {
   console.log(objectRGB);
   //get HSL
   const objectHSL = calculateHSL(objectRGB);
+  console.log(objectHSL);
   //round HSL
-  const roundedHSL = roundHSL(objectHSL);
+  // const roundedHSL = roundHSL(objectHSL);
+  // console.log(roundedHSL);
   //make hslArray
-  const arrayHSL = makeArrayHSl(roundedHSL);
+  const arrayHSL = makeArrayHSl(objectHSL);
   //decideHarmony(selectedHarmony);
   const analogueResultArray = calculateAnalogue(arrayHSL);
-  console.log(analogueResultArray);
+
   // calculateHSLtoRGB(analogueResultArray);
+  console.log(analogueResultArray);
   //display color
   displayColor(colorHex);
 }
@@ -97,7 +100,7 @@ function calculateHSL(objectRGB) {
   // multiply s and l by 100 to get the value in percent, rather than [0,1]
   s *= 100;
   l *= 100;
-  console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+  // console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
   return { h, s, l };
 }
 
@@ -124,6 +127,16 @@ function decideHarmony(harmony, arrayHSL) {
 
 function calculateAnalogue(arrayHSL) {
   //TODO calculate on all array values and return new HSL values
+  arrayHSL[1].h = arrayHSL[1].h + 10;
+  arrayHSL[2].h = arrayHSL[2].h + 20;
+  arrayHSL[3].h = arrayHSL[3].h + 30;
+  arrayHSL[4].h = arrayHSL[4].h + 40;
+  arrayHSL.forEach((hsl) => {
+    if (hsl.h > 360) {
+      hsl.h = hsl.h % 360;
+      return arrayHSL;
+    }
+  });
   return arrayHSL;
 }
 
