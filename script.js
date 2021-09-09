@@ -29,15 +29,19 @@ function trackHarmonySelector() {
 
 //DELEGATOR
 function updateColors() {
-  console.log(HTML.harmonySelected.value);
+  const selectedHarmony = HTML.harmonySelected.value;
   const colorHex = HTML.colorPicker.value;
   console.log(colorHex);
+  //get RGB
   const objectRGB = calculateRGB(colorHex);
+  //get HSL
   const objectHSL = calculateHSL(objectRGB);
   console.log(objectRGB);
+  //round HSL
   const roundedHSL = roundHSL(objectHSL);
   console.log(roundedHSL);
-
+  decideHarmony(selectedHarmony);
+  //display color
   displayColor(colorHex);
 }
 
@@ -98,6 +102,10 @@ function roundHSL(hsl) {
   const S = Math.round(hsl.s);
   const L = Math.round(hsl.l);
   return { H, S, L };
+}
+
+function decideHarmony(harmony) {
+  console.log(harmony);
 }
 
 function displayColor(valueHex) {
