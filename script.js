@@ -2,6 +2,7 @@
 
 const HTML = {};
 const RGB = { r: "", g: "", b: "" };
+const Color = { hex: "", rgb: "", hsl: "" };
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -47,8 +48,9 @@ function updateColors() {
   //decideHarmony(selectedHarmony);
   const analogueHarmonyHSL = calculateAnalogue(arrayHSL);
   const analogueHarmonyRGB = calculateHSLtoRGB(analogueHarmonyHSL);
-  console.log(analogueHarmonyRGB);
   const analogueHarmonyHex = calculateRGBtoHex(analogueHarmonyRGB);
+  const colorsArray = createColorsArray(analogueHarmonyHex, analogueHarmonyRGB, analogueHarmonyHSL);
+  console.log(colorsArray);
   //display color
   displayColor(colorHex);
 }
@@ -212,7 +214,19 @@ function calculateRGBtoHex(array) {
 
     arrayHex.push("#" + r + g + b);
   });
-  console.log(arrayHex);
+  return arrayHex;
+}
+
+function createColorsArray(hex, rgb, hsl) {
+  const colors = [];
+  for (let iterator = 0; iterator <= 4; iterator++) {
+    const color = Object.create(Color);
+    color.hex = hex[iterator];
+    color.rgb = rgb[iterator];
+    color.hsl = hsl[iterator];
+    colors.push(color);
+  }
+  return colors;
 }
 
 function displayColor(valueHex) {
