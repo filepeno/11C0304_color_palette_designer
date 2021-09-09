@@ -5,8 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Color Palette Designer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="script.js"></script>
+    <main>
+      <label for="color">Select color: </label>
+      <input type="color" name="color" />
+      <label for="harmony">Select harmony: </label>
+      <select name="harmony" id="harmony">
+        <option value="analogue">Analogue</option>
+        <option value="monochromatic">Monochromatic</option>
+        <option value="triad">Triad</option>
+        <option value="complementary">Complementary</option>
+        <option value="compound">Compound</option>
+        <option value="shades">Shades</option>
+      </select>
+      <section id="colors">
+        <article class="colorBox" id="color1">
+          <div class="colorShow"></div>
+          <di   v class="hex"></div>
+          <div></div>
+          <div></div>
+        </article>
+        <article class="colorBox" id="color2">
+          <div class="colorShow"></div>
+          <div class="hex"></div>
+          <div></div>
+          <div></div>
+        </article>
+        <article class="colorBox" id="color3">
+          <div class="colorShow"></div>
+          <div class="hex"></div>
+          <div></div>
+          <div></div>
+        </article>
+      </section>
+      <script src="script.js"></script>
+    </main>
   </body>
 </html>
