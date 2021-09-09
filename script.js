@@ -1,7 +1,6 @@
 "use strict";
 
 const HTML = {};
-const hslValues = [];
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -41,7 +40,8 @@ function updateColors() {
   const roundedHSL = roundHSL(objectHSL);
   //make hslArray
   const arrayHSL = makeArrayHSl(roundedHSL);
-  decideHarmony(selectedHarmony, arrayHSL);
+  //decide harmony
+  decideHarmony(selectedHarmony);
   //display color
   displayColor(colorHex);
 }
@@ -106,12 +106,12 @@ function roundHSL(hsl) {
 }
 
 function makeArrayHSl(roundedHSL) {
+  const hslValues = [];
   //reset hslValues array
-  hslValues.length = [];
   for (let iterator = 0; iterator <= 4; iterator++) {
-    hslValues.push(roundedHSL);
+    hslValues[iterator] = Object.assign({}, roundedHSL);
   }
-  return hslValues;
+  console.log(hslValues);
 }
 
 function decideHarmony(harmony, arrayHSL) {
@@ -120,9 +120,8 @@ function decideHarmony(harmony, arrayHSL) {
 }
 
 function calculateAnalogue(arrayHSL) {
-  console.log(arrayHSL[1].H);
-  arrayHSL[1].H = arrayHSL[1].H + 30;
-  console.log(arrayHSL);
+  //TODO calculate on all array values and return new HSL values
+  return arrayHSL;
 }
 
 function displayColor(valueHex) {
