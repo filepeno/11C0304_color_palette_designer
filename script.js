@@ -50,6 +50,7 @@ function updateColors() {
   const analogueHarmonyRGB = calculateHSLtoRGB(analogueHarmonyHSL);
   const analogueHarmonyHex = calculateRGBtoHex(analogueHarmonyRGB);
   const colorsArray = createColorsArray(analogueHarmonyHex, analogueHarmonyRGB, analogueHarmonyHSL);
+  roundHSL(colorsArray);
   console.log(colorsArray);
   //display color
   displayColor(colorHex);
@@ -107,11 +108,14 @@ function calculateHSL(objectRGB) {
   return { h, s, l };
 }
 
-function roundHSL(hsl) {
-  const H = Math.round(hsl.h);
-  const S = Math.round(hsl.s);
-  const L = Math.round(hsl.l);
-  return { H, S, L };
+function roundHSL(array) {
+  array.forEach((object) => {
+    object.hsl.h = Math.round(object.hsl.h);
+    object.hsl.s = Math.round(object.hsl.s);
+    object.hsl.l = Math.round(object.hsl.l);
+  });
+
+  return array;
 }
 
 function makeArrayHSl(roundedHSL) {
