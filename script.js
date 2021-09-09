@@ -1,6 +1,7 @@
 "use strict";
 
 const HTML = {};
+const hslValues = [];
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -36,11 +37,11 @@ function updateColors() {
   const objectRGB = calculateRGB(colorHex);
   //get HSL
   const objectHSL = calculateHSL(objectRGB);
-  console.log(objectRGB);
   //round HSL
   const roundedHSL = roundHSL(objectHSL);
-  console.log(roundedHSL);
-  decideHarmony(selectedHarmony);
+  //make hslArray
+  const arrayHSL = makeArrayHSl(roundedHSL);
+  decideHarmony(selectedHarmony, arrayHSL);
   //display color
   displayColor(colorHex);
 }
@@ -93,7 +94,7 @@ function calculateHSL(objectRGB) {
   // multiply s and l by 100 to get the value in percent, rather than [0,1]
   s *= 100;
   l *= 100;
-  //   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+  console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
   return { h, s, l };
 }
 
@@ -104,8 +105,24 @@ function roundHSL(hsl) {
   return { H, S, L };
 }
 
-function decideHarmony(harmony) {
-  console.log(harmony);
+function makeArrayHSl(roundedHSL) {
+  //reset hslValues array
+  hslValues.length = [];
+  for (let iterator = 0; iterator <= 4; iterator++) {
+    hslValues.push(roundedHSL);
+  }
+  return hslValues;
+}
+
+function decideHarmony(harmony, arrayHSL) {
+  //TODO Make if statements for harmonies
+  calculateAnalogue(arrayHSL);
+}
+
+function calculateAnalogue(arrayHSL) {
+  console.log(arrayHSL[1].H);
+  arrayHSL[1].H = arrayHSL[1].H + 30;
+  console.log(arrayHSL);
 }
 
 function displayColor(valueHex) {
