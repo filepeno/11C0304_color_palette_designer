@@ -136,10 +136,9 @@ function decideHarmonyAndCalculate(harmony, arrayHSL) {
 
 function calculateAnalogue(arrayHSL) {
   //TODO calculate on all array values and return new HSL values
-  arrayHSL[1].h = arrayHSL[1].h + 10;
-  arrayHSL[2].h = arrayHSL[2].h + 20;
-  arrayHSL[3].h = arrayHSL[3].h + 30;
-  arrayHSL[4].h = arrayHSL[4].h + 40;
+  for (let i = 1; i < 5; i++) {
+    arrayHSL[i].h = arrayHSL[i - 1].h + 10;
+  }
   arrayHSL.forEach((hsl) => {
     if (hsl.h > 360) {
       hsl.h = hsl.h % 360;
