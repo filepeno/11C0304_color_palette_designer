@@ -45,11 +45,11 @@ function updateColors() {
   // console.log(roundedHSL);
   //make hslArray of the colour selection
   const arrayHSL = makeArrayHSl(objectHSL);
-  //decideHarmony(selectedHarmony);
-  const analogueHarmonyHSL = calculateAnalogue(arrayHSL);
-  const analogueHarmonyRGB = calculateHSLtoRGB(analogueHarmonyHSL);
-  const analogueHarmonyHex = calculateRGBtoHex(analogueHarmonyRGB);
-  const colorsArray = createColorsArray(analogueHarmonyHex, analogueHarmonyRGB, analogueHarmonyHSL);
+  const arrayHarmonyHSL = decideHarmonyAndCalculate(selectedHarmony, arrayHSL);
+  console.log(arrayHarmonyHSL);
+  const arrayHarmonyRGB = calculateHSLtoRGB(arrayHarmonyHSL);
+  const arrayHarmonyHex = calculateRGBtoHex(arrayHarmonyRGB);
+  const colorsArray = createColorsArray(arrayHarmonyHex, arrayHarmonyRGB, arrayHarmonyHSL);
   roundHSL(colorsArray);
   console.log(colorsArray);
   //display color
@@ -127,9 +127,11 @@ function makeArrayHSl(roundedHSL) {
   return hslValues;
 }
 
-function decideHarmony(harmony, arrayHSL) {
+function decideHarmonyAndCalculate(harmony, arrayHSL) {
   //TODO Make if statements for harmonies
-  calculateAnalogue(arrayHSL);
+  if (harmony === "analogue") {
+    return calculateAnalogue(arrayHSL);
+  }
 }
 
 function calculateAnalogue(arrayHSL) {
