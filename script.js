@@ -53,7 +53,7 @@ function updateColors() {
   roundHSL(colorsArray);
   console.log(colorsArray);
   //display color
-  colorsArray.forEach(displayColor);
+  displayColor(colorsArray);
 }
 
 function calculateRGB(value) {
@@ -233,12 +233,15 @@ function createColorsArray(hex, rgb, hsl) {
   return colors;
 }
 
-function displayColor(color) {
-  console.log(color);
-  const template = document.querySelector("template").content;
-  const copy = template.cloneNode(true);
-  copy.querySelector("article > .displayColor").style.background = color.hex;
-  copy.querySelector("article > .hex").textContent = color.hex;
+function displayColor(array) {
+  // TO DO section.innerHTML = ""
   const parent = document.querySelector("section");
-  parent.appendChild(copy);
+  parent.innerHTML = "";
+  array.forEach((color) => {
+    const template = document.querySelector("template").content;
+    const copy = template.cloneNode(true);
+    copy.querySelector(".displayColor").style.backgroundColor = color.hex;
+    copy.querySelector(".hex").textContent = color.hex;
+    parent.appendChild(copy);
+  });
 }
