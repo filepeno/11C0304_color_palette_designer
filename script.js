@@ -241,7 +241,9 @@ function displayColor(array) {
     const template = document.querySelector("template").content;
     const copy = template.cloneNode(true);
     copy.querySelector(".displayColor").style.backgroundColor = color.hex;
-    copy.querySelector(".hex").textContent = color.hex;
+    copy.querySelector(".hex").textContent = `Hex: ${color.hex}`;
+    copy.querySelector(".rgb").textContent = `RGB: ${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
+    copy.querySelector(".hsl").textContent = `HSL: ${color.hsl.h}°, ${color.hsl.s}%, ${color.hsl.l}%`;
     parent.appendChild(copy);
   });
 }
