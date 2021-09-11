@@ -9,24 +9,32 @@
   </head>
   <body>
     <main>
-      <label for="color">Select color: </label>
-      <input type="color" name="color" />
-      <label for="harmony">Select harmony: </label>
-      <select name="harmony" id="harmony">
-        <option value="analogue">Analogue</option>
-        <option value="monochromatic">Monochromatic</option>
-        <option value="triad">Triad</option>
-        <option value="complementary">Complementary</option>
-        <option value="compound">Compound</option>
-        <option value="shades">Shades</option>
-      </select>
+      <section id="selection">
+        <div class="colorSelector">
+          <label for="color">Select color: </label>
+          <input type="color" name="color" />
+        </div>
+        <div class="harmonySelector">
+          <label for="harmony">Select harmony: </label>
+          <select name="harmony" id="harmony">
+            <option value="analogue">Analogue</option>
+            <option value="monochromatic">Monochromatic</option>
+            <option value="triad">Triad</option>
+            <option value="complementary">Complementary</option>
+            <option value="compound">Compound</option>
+            <option value="shades">Shades</option>
+          </select>
+        </div>
+      </section>
 
       <template>
         <article class="colorBox">
           <div class="displayColor"></div>
-          <div class="hex"></div>
-          <div class="rgb"></div>
-          <div class="hsl"></div>
+          <div class="codes">
+            <div class="hex"></div>
+            <div class="rgb"></div>
+            <div class="hsl"></div>
+          </div>
         </article>
       </template>
 

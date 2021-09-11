@@ -236,7 +236,7 @@ function createColorsArray(hex, rgb, hsl) {
 
 function displayColor(array) {
   // TO DO section.innerHTML = ""
-  const parent = document.querySelector("section");
+  const parent = document.querySelector("#colors");
   parent.innerHTML = "";
   array.forEach((color) => {
     const template = document.querySelector("template").content;

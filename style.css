@@ -1,17 +1,47 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-} */
-section#colors {
-  margin-top: 2rem;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
+}
+
+section#selection {
+  margin: 1rem;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+}
+
+#selection > * {
+  margin-bottom: 1rem;
+}
+
+section#colors {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-gap: 2rem;
+}
+
+.colorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.codes {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .displayColor {
   background-color: coral;
-  border-radius: 50px;
-  width: 100px;
-  height: 100px;
+  border-radius: 5rem;
+  width: 5rem;
+  height: 5rem;
 }
