@@ -129,13 +129,14 @@ function makeArrayHSl(roundedHSL) {
 
 function decideHarmonyAndCalculate(harmony, arrayHSL) {
   //TODO Make if statements for harmonies
-  if (harmony === "analogue") {
-    return calculateAnalogue(arrayHSL);
+  switch (harmony) {
+    case "analogue":
+      return calculateAnalogue(arrayHSL);
+      break;
   }
 }
 
 function calculateAnalogue(arrayHSL) {
-  //TODO calculate on all array values and return new HSL values
   for (let i = 1; i < 5; i++) {
     arrayHSL[i].h = arrayHSL[i - 1].h + 10;
   }
@@ -235,7 +236,6 @@ function createColorsArray(hex, rgb, hsl) {
 }
 
 function displayColor(array) {
-  // TO DO section.innerHTML = ""
   const parent = document.querySelector("#colors");
   parent.innerHTML = "";
   array.forEach((color) => {
