@@ -133,20 +133,36 @@ function decideHarmonyAndCalculate(harmony, arrayHSL) {
     case "analogue":
       return calculateAnalogue(arrayHSL);
       break;
+    case "monochromatic":
+      return calculateMonochromatic(arrayHSL);
+      break;
   }
 }
 
-function calculateAnalogue(arrayHSL) {
+function calculateAnalogue(array) {
   for (let i = 1; i < 5; i++) {
-    arrayHSL[i].h = arrayHSL[i - 1].h + 10;
+    array[i].h = array[i - 1].h + 15;
   }
-  arrayHSL.forEach((hsl) => {
+  array.forEach((hsl) => {
     if (hsl.h > 360) {
       hsl.h = hsl.h % 360;
-      return arrayHSL;
+      return array;
     }
   });
-  return arrayHSL;
+  return array;
+}
+
+function calculateMonochromatic(array) {
+  for (let i = 1; i < 5; i++) {
+    array[i].s = array[i - 1].s - 15;
+  }
+  array.forEach((hsl) => {
+    if (hsl.s < 0) {
+      hsl.s = 0;
+      return array;
+    }
+  });
+  return array;
 }
 
 function calculateHSLtoRGB(array) {
